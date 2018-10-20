@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './Plan';
-import App2 from './App.js'
+import Plan from './Plan';
+import App from './App.js'
+import Login from './Login.js'
 import * as serviceWorker from './serviceWorker';
 
 import { Route } from "react-router";
@@ -34,8 +35,8 @@ const db = client.getServiceClient(RemoteMongoClient.factory,
 ReactDOM.render(
 <BrowserRouter>
     <div>
-       <Route exact path="/" render={routeProps => <App/>}/>
-       <Route path="/settings" render={routeProps => <App2/>}/>
+        <Route exact path="/" render={routeProps => <Login client={client}/>}/>
+        <Route path="/route" render={routeProps => <Plan client={client}/>}/>
     </div>
 </BrowserRouter>, document.getElementById('root'));
 

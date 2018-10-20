@@ -4,7 +4,7 @@ import './App.css';
 
 // Just for testing the routing
 
-class App2 extends Component {
+class App extends Component {
   render() {
     return (
       <div className="App">
@@ -27,4 +27,4 @@ class App2 extends Component {
   }
 }
 
-export default App2;
+export default App;

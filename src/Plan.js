@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import * as bs from 'react-bootstrap' 
 import './bootstrap.css';
 
 var form = []
 
-function App(props) {
+function Plan(props) {
     return (
         <div>
             <Title/>
@@ -77,7 +78,7 @@ class LocationForm extends Component {
     render() {
         return (
             <div>
-                <form className="form-group text-center" onSubmit={this.handleSubmit}>
+                <form className="text-center" onSubmit={this.handleSubmit}>
                 <label>
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
@@ -100,10 +101,10 @@ class Submit extends Component {
     render() {
         return (
             <div className="text-center">
-                <button type="button" onClick={this.handleSubmit}>Go!</button>
+                <bs.Button onClick={this.handleSubmit}>Go!</bs.Button>
             </div>
         );
     }
 }
 
-export default App;
+export default Plan;
