@@ -5,11 +5,12 @@ import './bootstrap.css';
 var form = []
 
 function Plan(props) {
+    console.log('Plan', props.user);
     return (
         <div>
             <Title/>
             <AppComponent/>
-            <Submit/>
+            <Submit db={props.db} user={props.user}/>
         </div>
     );
 }
@@ -91,11 +92,27 @@ class LocationForm extends Component {
 class Submit extends Component {
     constructor(props) {
         super(props);
+        this.db = props.db;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(event) {
-        alert(form);
+        let segments = [];
+        alert(this.props.user.email);
+        for (const loc in form) {
+            if (form.hasOwnProperty(loc)) {
+                segments.push({
+                    points: form[loc],
+                    names: [this.props.user.name]
+                });
+            }
+        }
+        let route = {
+            owner : this.props.user.email,
+            segments : segments
+        }
+        alert(route);
+        this.db.collection('routes').insertOne(route);
     }
 
     render() {
