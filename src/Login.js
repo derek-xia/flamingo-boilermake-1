@@ -37,9 +37,9 @@ class Login extends React.Component {
                     Routes
                 </h1>
                 <h1>
-                    <a href="#" className="" onClick={() => logout()}>
+                    <bs.Button bsSize="large" onClick={() => logout()}>
                     Sign Out
-                    </a>
+                    </bs.Button>
                 </h1>
                 <bs.Button>
                     <Link to="/plan">Route</Link>
