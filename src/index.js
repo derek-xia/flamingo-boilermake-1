@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Plan from './Plan';
-import Login from './Login.js'
+import Login from './Login.js';
+import Trip from './Trip';
 import * as serviceWorker from './serviceWorker';
 
 import { Route } from "react-router";
@@ -45,8 +46,11 @@ class App extends React.Component {
             <Route exact path="/" render={
                 routeProps => <Login client={client} db={db} user={this.state.user} callback={this.setUser}/>
             }/>
-            <Route path="/route" key={this.state.user} render={
+            <Route path="/plan" key={this.state.user} render={
                 routeProps => <Plan client={client} db={db} user={this.state.user}/>
+            }/>
+            <Route path="/trip" render={
+                routeProps => <Trip client={client} db={db} user={this.state.user}/>
             }/>
             </div>
         </BrowserRouter>

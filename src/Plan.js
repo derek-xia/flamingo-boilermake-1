@@ -10,7 +10,7 @@ function Plan(props) {
         <div>
             <Title/>
             <AppComponent/>
-            <Submit db={props.db} user={props.user}/>
+            <Submit db={props.db} user={props.user} client={props.client}/>
         </div>
     );
 }
@@ -97,8 +97,9 @@ class Submit extends Component {
     }
 
     handleSubmit(event) {
+        //this.props.client.callFunction("pushRoute", form).then(()=>console.log("done"));
         let segments = [];
-        alert(this.props.user.email);
+        let names = [];
         for (const loc in form) {
             if (form.hasOwnProperty(loc)) {
                 segments.push({
@@ -111,7 +112,6 @@ class Submit extends Component {
             owner : this.props.user.email,
             segments : segments
         }
-        alert(route);
         this.db.collection('routes').insertOne(route);
     }
 

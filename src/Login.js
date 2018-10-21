@@ -22,7 +22,6 @@ class Login extends React.Component {
             this.client.auth.handleRedirectResult().then(user=>{
                 this.setState({userData:user.profile.data});
                 this.props.callback(user.profile.data);
-                alert(user.profile.data);
             });
         }
     }
@@ -33,25 +32,24 @@ class Login extends React.Component {
         return (
         <div className="text-center">
         {authed
-            ? <div className="login-header">
+            ? <div>
                 {this.state.userData && this.state.userData.picture
                     ? <img src={this.state.userData.picture} className="profile-pic" />
                     : null}
-                <span className="login-text">
-                    <span className="username">
+                <h1>
                     {this.state.userData && this.state.userData.name ? this.state.userData.name : "?"}
-                    </span>
-                </span>
-                <div>
-                    <a href="#" onClick={() => logout()}>
-                    sign out
+                </h1>
+                <h1>
+                    <a href="#" className="" onClick={() => logout()}>
+                    Sign Out
                     </a>
-                </div>
+                </h1>
                 <div>
-                    <Link to="/route">Route</Link>
+                    <Link to="/plan">Route</Link>
                 </div>
                 </div>
             : null}
+        
         {!authed
             ? <div className="login-links-panel">
                 <h2>Routes</h2>
@@ -64,20 +62,6 @@ class Login extends React.Component {
                     Sign in with Facebook
                     </span>
                 
-                </div>
-                <div className="login-links-panel">
-                
-                <div
-                    onClick={() => this.client.auth.loginWithCredential(new AnonymousCredential()).then(user => {
-                    alert(`Logged in as anonymous user with id: ${user.id}`);
-                    }).catch(console.error)}
-                    className="signin-button"
-                >
-                    <div/>
-                    <span className="signin-button-text">
-                    Sign in Anonymously
-                    </span>
-                </div>
                 </div>
                 </div>
             : null}
