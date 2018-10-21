@@ -85,16 +85,28 @@ class Segment extends Component {
             isLit: !this.state.isLit
         }));
         /*if (this.state.isLit) {
-            
-        } else {
-            let obj = db.this.props.db.collection("routes").findOne({_id:this.props.id});   
+            let obj = this.props.db.collection("routes").find({_id:this.props.id}).asArray().then(f=> {;
             obj.forEach(function(o){
                 if (o.points == this.props.points) {
-                    obj.names.push(this.myName);
+                    let temp = {}; 
+                    temp = obj.names.filter(o=>o==this.myName);
+                    obj.names = temp;
                 }
             });
-            db.this.props.db.collection("routes")
-        }*/        
+            this.props.db.collection("routes").update({_id:this.props.id},{$set : obj});
+        });
+            
+        } else {
+            let obj = this.props.db.collection("routes").find({_id:this.props.id}).asArray().then(f=> {
+                console.log(f);
+                f.forEach(function(o){
+                    if (o.points == this.props.points) {
+                        f.names.push(this.myName);
+                    }
+                });
+                this.props.db.collection("routes").updateOne({_id:this.props.id},{$set : f});
+            });
+        }*/    
     }
     render() {
         return (

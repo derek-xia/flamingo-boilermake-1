@@ -32,22 +32,22 @@ class Login extends React.Component {
         return (
         <div className="text-center">
         {authed
-            ? <div>
-                {this.state.userData && this.state.userData.picture
-                    ? <img src={this.state.userData.picture} className="profile-pic" />
-                    : null}
+            ? <bs.Jumbotron>
                 <h1>
-                    {this.state.userData && this.state.userData.name ? this.state.userData.name : "?"}
+                    Routes
                 </h1>
                 <h1>
                     <a href="#" className="" onClick={() => logout()}>
                     Sign Out
                     </a>
                 </h1>
-                <div>
+                <bs.Button>
                     <Link to="/plan">Route</Link>
-                </div>
-                </div>
+                </bs.Button>
+                <bs.Button>
+                    <Link to="/trip">Trips</Link>
+                </bs.Button>
+                </bs.Jumbotron>
             : null}
         
         {!authed
